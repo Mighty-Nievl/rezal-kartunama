@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 import mdx from '@astrojs/mdx';
 import keystatic from '@keystatic/astro';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,4 +13,6 @@ export default defineConfig({
   },
 
   integrations: [mdx(), keystatic()],
+  
+  adapter: cloudflare(),
 });

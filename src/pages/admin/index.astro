@@ -1,10 +1,5 @@
 ---
-import { defineConfig } from 'astro/config';
-import keystatic from '@keystatic/astro';
-
-export default defineConfig({
-  integrations: [keystatic()],
-});
+// Keystatic admin page
 ---
 
 <html lang="id">
@@ -13,6 +8,10 @@ export default defineConfig({
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
   <body>
-    <Keystatic />
+    <script>
+      // Redirect to Keystatic app
+      window.location.href = '/_keystatic/';
+    </script>
+    <p>Redirecting to Keystatic CMS...</p>
   </body>
 </html>
