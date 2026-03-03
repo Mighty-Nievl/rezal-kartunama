@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog Admin - Rezal Helwin Bramantara</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    
+    <!-- Decap CMS -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+      :root {
+        --emerald-500: #10b981;
+        --emerald-600: #059669;
+        --emerald-700: #047857;
+        --bg-dark: #0a0a0a;
+      }
+
+      body {
+        background: var(--bg-dark);
+      }
+
+      /* Custom Login Page */
+      .decap-cms-login {
+        background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+      }
+
+      /* Custom App Header */
+      .decap-cms-app-header {
+        background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-600) 100%);
+      }
+
+      /* Loading Screen */
+      #loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+        color: #10b981;
+        font-family: 'Inter', sans-serif;
+      }
+
+      .loading-content {
+        text-align: center;
+      }
+
+      .spinner {
+        width: 50px;
+        height: 50px;
+        border: 3px solid rgba(16, 185, 129, 0.2);
+        border-top-color: #10b981;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      .loading-text {
+        color: #a1a1a1;
+        font-size: 0.875rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading">
+      <div class="loading-content">
+        <div class="spinner"></div>
+        <p class="loading-text">Loading Blog Admin...</p>
+      </div>
+    </div>
+
+    <!-- Decap CMS Config -->
+    <script>
+      // Initialize Decap CMS
+      CMS.init({
+        config: {
+          backend: {
+            name: 'git-gateway', // GANTI dari 'github' ke 'git-gateway' setelah setup Netlify Identity
+            branch: 'main',
+          },
+          locale: 'id',
+          site_url: 'https://rezal.online',
+          display_url: 'https://rezal.online',
+          media_folder: 'public/blog-covers',
+          public_folder: '/blog-covers',
+          collections: [
+            {
+              name: 'blog',
+              label: 'Blog Posts',
+              folder: 'src/content/blog',
+              create: true,
+              slug: '{{slug}}',
+              editor: {
+                preview: true,
+              },
+              fields: [
+                {
+                  name: 'title',
+                  label: 'Title',
+                  widget: 'string',
+                  required: true,
+                  hint: 'Judul artikel (gunakan Sentence case, bukan ALL CAPS)',
+                },
+                {
+                  name: 'description',
+                  label: 'Description',
+                  widget: 'text',
+                  required: true,
+                  hint: 'Deskripsi singkat untuk SEO dan social media preview',
+                },
+                {
+                  name: 'pubDate',
+                  label: 'Publication Date',
+                  widget: 'datetime',
+                  required: true,
+                  format: 'YYYY-MM-DD',
+                  dateFormat: 'YYYY-MM-DD',
+                  timeFormat: false,
+                },
+                {
+                  name: 'tags',
+                  label: 'Tags',
+                  widget: 'list',
+                  required: false,
+                  field: {
+                    label: 'Tag',
+                    name: 'tag',
+                    widget: 'string',
+                  },
+                  hint: 'Tags untuk kategorisasi artikel',
+                },
+                {
+                  name: 'categories',
+                  label: 'Categories',
+                  widget: 'list',
+                  required: false,
+                  field: {
+                    label: 'Category',
+                    name: 'category',
+                    widget: 'string',
+                  },
+                },
+                {
+                  name: 'cover',
+                  label: 'Cover Image',
+                  widget: 'image',
+                  required: false,
+                  media_folder: 'public/blog-covers',
+                  public_folder: '/blog-covers',
+                  hint: 'Gambar cover untuk artikel (optional)',
+                },
+                {
+                  name: 'draft',
+                  label: 'Draft',
+                  widget: 'boolean',
+                  default: false,
+                  hint: 'Aktifkan jika artikel belum siap dipublish',
+                },
+                {
+                  name: 'author',
+                  label: 'Author',
+                  widget: 'string',
+                  default: 'Rezal Helwin Bramantara',
+                  required: false,
+                },
+                {
+                  name: 'body',
+                  label: 'Content',
+                  widget: 'markdown',
+                  required: true,
+                  hint: 'Tulis konten artikel di sini. Support Markdown syntax.',
+                },
+              ],
+            },
+          ],
+        },
+      });
+
+      // Hide loading screen when CMS is ready
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          const loading = document.getElementById('loading');
+          if (loading) {
+            loading.style.display = 'none';
+          }
+        }, 2000);
+      });
+    </script>
+  </body>
+</html>

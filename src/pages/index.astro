@@ -1,0 +1,262 @@
+---
+import '../styles/global.css';
+
+const fullName = "Rezal Helwin Bramantara";
+const initials = "RHB";
+const tagline = "Digital Creator & Developer";
+const email = "hub@rezal.online";
+const threadsUrl = "https://threads.com/@rezalh_";
+const github = "https://github.com/rezalh";
+const whatsapp = "https://wa.me/6282265030113";
+const location = "Indonesia";
+const website = "rezal.online";
+const idNumber = "RHB-2026-001";
+
+const projects = [
+  {
+    name: "Rezal Online",
+    desc: "Personal portfolio & digital identity card with modern design",
+    tags: ["Astro", "Tailwind", "Cloudflare"],
+    url: "https://rezal.online"
+  },
+  {
+    name: "Project Two",
+    desc: "Description of your second project goes here",
+    tags: ["React", "Node.js"],
+    url: "#"
+  },
+  {
+    name: "Project Three",
+    desc: "Description of your third project goes here",
+    tags: ["Next.js", "TypeScript"],
+    url: "#"
+  },
+  {
+    name: "Project Four",
+    desc: "Description of your fourth project goes here",
+    tags: ["Vue", "Firebase"],
+    url: "#"
+  }
+];
+---
+
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Digital Identity Card - Rezal Helwin Bramantara" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{fullName} | Digital Card</title>
+  </head>
+  <body>
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg class="sun-icon" viewBox="0 0 24 24" id="sunIcon">
+        <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.003a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.166 5.106a.75.75 0 001.06 1.06l1.591-1.59a.75.75 0 00-1.061-1.061l-1.59 1.59z" />
+      </svg>
+      <svg class="moon-icon hidden" viewBox="0 0 24 24" id="moonIcon">
+        <path d="M12 3a2.25 2.25 0 01.95 4.401 5.25 5.25 0 106.149 6.149A2.25 2.25 0 0112 21a9 9 0 110-18z" />
+      </svg>
+    </button>
+
+    <!-- Background -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <!-- Card Container -->
+    <div class="card-container">
+      <div class="flip-card" id="flipCard">
+        
+        <!-- Front: Identity Card -->
+        <div class="card-face card-front">
+          <!-- Header -->
+          <div class="card-header">
+            <div class="avatar">{initials}</div>
+            <h1 class="name">{fullName}</h1>
+            <p class="title">{tagline}</p>
+          </div>
+
+          <div class="divider"></div>
+
+          <!-- Body -->
+          <div class="card-body">
+            <div class="info-grid">
+              <div class="info-item">
+                <span class="label">Email</span>
+                <span class="value">
+                  <a href={`mailto:${email}`}>{email}</a>
+                </span>
+              </div>
+
+              <div class="info-item">
+                <span class="label">Location</span>
+                <span class="value">{location}</span>
+              </div>
+
+              <div class="info-item full-width">
+                <span class="label">Connect</span>
+                <div class="social-links">
+                  <a 
+                    href={threadsUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="social-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12.003 2.003c-5.522 0-9.997 4.475-9.997 9.997 0 1.723.438 3.346 1.207 4.761.087.16.32.16.407 0 .23-.422.493-.826.787-1.208.087-.113.066-.274-.048-.366a7.997 7.997 0 1113.284 7.294c-.143.143-.366.143-.509 0a.36.36 0 010-.509 5.997 5.997 0 10-8.484-8.484.36.36 0 01-.509 0 .36.36 0 010-.509 7.997 7.997 0 0111.314 0c2.344 2.344 2.344 6.14 0 8.484a5.997 5.997 0 11-8.484-8.484.36.36 0 01.509 0 .36.36 0 010 .509 7.997 7.997 0 1011.314 0c-2.344-2.344-6.14-2.344-8.484 0z"/>
+                    </svg>
+                    Threads
+                  </a>
+                  
+                  <a 
+                    href={github} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="social-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-2.036 1.029-2.75-1.031-.15-2.12-.52-2.12-.52s1.09-.07 2.22.08c1.27.18 2.46.618 3.65 1.17 1.19-.552 2.38-.99 3.65-1.17 1.13-.15 2.22-.08 2.22-.08s-1.09.37-2.12.52c.64.714 1.03 1.657 1.03 2.75 0 3.848-2.34 4.695-4.56 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                    </svg>
+                    GitHub
+                  </a>
+
+                  <a 
+                    href={whatsapp} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="social-link"
+                  >
+                    <svg viewBox="0 0 24 24">
+                      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                    WhatsApp
+                  </a>
+
+                  <a href="/blog" class="social-link">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                    </svg>
+                    Blog
+                  </a>
+
+                  <button class="projects-btn" id="flipBtn">
+                    <svg viewBox="0 0 24 24">
+                      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                    </svg>
+                    Projects
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <div class="card-footer">
+            <div class="id-badge">
+              <div class="id-dot"></div>
+              <span class="id-text">ID: <span>{idNumber}</span></span>
+            </div>
+            <div class="status-badge">
+              <span>●</span> Available for work
+            </div>
+          </div>
+        </div>
+
+        <!-- Back: Projects -->
+        <div class="card-face card-back">
+          <div class="projects-header">
+            <h2 class="projects-title">My Projects</h2>
+            <p class="projects-subtitle">Things I've built</p>
+          </div>
+
+          <div class="projects-grid">
+            {projects.map((project) => (
+              <a href={project.url} target="_blank" rel="noopener noreferrer" class="project-card">
+                <h3 class="project-name">{project.name}</h3>
+                <p class="project-desc">{project.desc}</p>
+                <div class="project-tags">
+                  {project.tags.map((tag) => (
+                    <span class="project-tag">{tag}</span>
+                  ))}
+                </div>
+              </a>
+            ))}
+          </div>
+
+          <div class="back-footer">
+            <button class="back-btn" id="backBtn">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+              </svg>
+              Back to Card
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      // Flip Card Functionality
+      const flipCard = document.getElementById('flipCard');
+      const flipBtn = document.getElementById('flipBtn');
+      const backBtn = document.getElementById('backBtn');
+      const frontFace = flipCard?.querySelector('.card-front');
+      const backFace = flipCard?.querySelector('.card-back');
+
+      function syncCardHeight() {
+        if (!flipCard || !frontFace || !backFace) return;
+        const maxHeight = Math.max(frontFace.scrollHeight, backFace.scrollHeight);
+        flipCard.style.setProperty('--card-height', `${maxHeight}px`);
+      }
+
+      syncCardHeight();
+      window.addEventListener('resize', syncCardHeight);
+
+      if (typeof ResizeObserver !== 'undefined' && frontFace && backFace) {
+        const resizeObserver = new ResizeObserver(syncCardHeight);
+        resizeObserver.observe(frontFace);
+        resizeObserver.observe(backFace);
+      }
+
+      if (flipBtn && flipCard) {
+        flipBtn.addEventListener('click', () => {
+          flipCard.classList.add('flipped');
+        });
+      }
+
+      if (backBtn && flipCard) {
+        backBtn.addEventListener('click', () => {
+          flipCard.classList.remove('flipped');
+        });
+      }
+
+      // Theme Toggle
+      const themeToggle = document.getElementById('themeToggle');
+      const sunIcon = document.getElementById('sunIcon');
+      const moonIcon = document.getElementById('moonIcon');
+      
+      const savedTheme = localStorage.getItem('theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      updateIcons(savedTheme);
+
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateIcons(newTheme);
+      });
+
+      function updateIcons(theme) {
+        if (theme === 'dark') {
+          sunIcon.classList.remove('hidden');
+          moonIcon.classList.add('hidden');
+        } else {
+          sunIcon.classList.add('hidden');
+          moonIcon.classList.remove('hidden');
+        }
+      }
+    </script>
+  </body>
+</html>
