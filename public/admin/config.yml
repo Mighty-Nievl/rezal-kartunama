@@ -27,7 +27,7 @@ collections:
     fields:
       - { name: title, label: Title, widget: string, required: true, hint: 'Judul artikel (gunakan Sentence case, bukan ALL CAPS)' }
       - { name: description, label: Description, widget: text, required: true, hint: 'Deskripsi singkat untuk SEO dan social media preview' }
-      - { name: pubDate, label: 'Publication Date', widget: datetime, required: true, format: 'YYYY-MM-DD', dateFormat: 'YYYY-MM-DD', timeFormat: false }
+      - { name: pubDate, label: 'Publication Date', widget: datetime, required: true, format: 'YYYY-MM-DD', date_format: 'YYYY-MM-DD', time_format: false }
       - { name: tags, label: Tags, widget: list, required: false, field: { label: Tag, name: tag, widget: string }, hint: 'Tags untuk kategorisasi artikel', default: [] }
       - { name: categories, label: Categories, widget: list, required: false, field: { label: Category, name: category, widget: string }, default: [] }
       - { name: cover, label: 'Cover Image', widget: image, required: false, media_folder: public/blog-covers, public_folder: /blog-covers, hint: 'Gambar cover untuk artikel (optional)' }

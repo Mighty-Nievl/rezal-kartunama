@@ -9,8 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "3": "^2.1.0",
     "@astrojs/mdx": "^4.3.13",
     "@astrojs/rss": "^4.0.15",
+    "@keystatic/astro": "^5.0.6",
+    "@keystatic/core": "^0.5.48",
     "astro": "^5.17.1",
     "reading-time-estimator": "^2.1.1"
   },

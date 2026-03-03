@@ -7,7 +7,7 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
     <!-- Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js" defer></script>
     
     <!-- Custom Styles -->
     <style>
@@ -20,16 +20,6 @@
 
       body {
         background: var(--bg-dark);
-      }
-
-      /* Custom Login Page */
-      .decap-cms-login {
-        background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
-      }
-
-      /* Custom App Header */
-      .decap-cms-app-header {
-        background: linear-gradient(135deg, var(--emerald-700) 0%, var(--emerald-600) 100%);
       }
 
       /* Loading Screen */
@@ -65,6 +55,12 @@
         color: #a1a1a1;
         font-size: 0.875rem;
       }
+
+      .error-message {
+        color: #ef4444;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+      }
     </style>
   </head>
   <body>
@@ -76,118 +72,25 @@
       </div>
     </div>
 
-    <!-- Decap CMS Config -->
+    <!-- Decap CMS will auto-initialize with config.yml -->
     <script>
-      // Initialize Decap CMS
-      CMS.init({
-        config: {
-          backend: {
-            name: 'git-gateway', // GANTI dari 'github' ke 'git-gateway' setelah setup Netlify Identity
-            branch: 'main',
-          },
-          locale: 'id',
-          site_url: 'https://rezal.online',
-          display_url: 'https://rezal.online',
-          media_folder: 'public/blog-covers',
-          public_folder: '/blog-covers',
-          collections: [
-            {
-              name: 'blog',
-              label: 'Blog Posts',
-              folder: 'src/content/blog',
-              create: true,
-              slug: '{{slug}}',
-              editor: {
-                preview: true,
-              },
-              fields: [
-                {
-                  name: 'title',
-                  label: 'Title',
-                  widget: 'string',
-                  required: true,
-                  hint: 'Judul artikel (gunakan Sentence case, bukan ALL CAPS)',
-                },
-                {
-                  name: 'description',
-                  label: 'Description',
-                  widget: 'text',
-                  required: true,
-                  hint: 'Deskripsi singkat untuk SEO dan social media preview',
-                },
-                {
-                  name: 'pubDate',
-                  label: 'Publication Date',
-                  widget: 'datetime',
-                  required: true,
-                  format: 'YYYY-MM-DD',
-                  dateFormat: 'YYYY-MM-DD',
-                  timeFormat: false,
-                },
-                {
-                  name: 'tags',
-                  label: 'Tags',
-                  widget: 'list',
-                  required: false,
-                  field: {
-                    label: 'Tag',
-                    name: 'tag',
-                    widget: 'string',
-                  },
-                  hint: 'Tags untuk kategorisasi artikel',
-                },
-                {
-                  name: 'categories',
-                  label: 'Categories',
-                  widget: 'list',
-                  required: false,
-                  field: {
-                    label: 'Category',
-                    name: 'category',
-                    widget: 'string',
-                  },
-                },
-                {
-                  name: 'cover',
-                  label: 'Cover Image',
-                  widget: 'image',
-                  required: false,
-                  media_folder: 'public/blog-covers',
-                  public_folder: '/blog-covers',
-                  hint: 'Gambar cover untuk artikel (optional)',
-                },
-                {
-                  name: 'draft',
-                  label: 'Draft',
-                  widget: 'boolean',
-                  default: false,
-                  hint: 'Aktifkan jika artikel belum siap dipublish',
-                },
-                {
-                  name: 'author',
-                  label: 'Author',
-                  widget: 'string',
-                  default: 'Rezal Helwin Bramantara',
-                  required: false,
-                },
-                {
-                  name: 'body',
-                  label: 'Content',
-                  widget: 'markdown',
-                  required: true,
-                  hint: 'Tulis konten artikel di sini. Support Markdown syntax.',
-                },
-              ],
-            },
-          ],
-        },
-      });
-
-      // Hide loading screen when CMS is ready
+      // Wait for DOM and CMS to be ready
       window.addEventListener('DOMContentLoaded', () => {
+        const loading = document.getElementById('loading');
+        
+        // Check if CMS is loaded after a short delay
         setTimeout(() => {
-          const loading = document.getElementById('loading');
-          if (loading) {
+          if (typeof window.CMS === 'undefined') {
+            loading.innerHTML = `
+              <div class="loading-content">
+                <p class="error-message">Error: Decap CMS failed to load.</p>
+                <p style="color: #a1a1a1; font-size: 0.75rem; margin-top: 0.5rem;">
+                  Please refresh the page or check your internet connection.
+                </p>
+              </div>
+            `;
+          } else {
+            // CMS loaded successfully, hide loading
             loading.style.display = 'none';
           }
         }, 2000);

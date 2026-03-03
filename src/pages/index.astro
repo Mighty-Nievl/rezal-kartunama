@@ -47,6 +47,9 @@ const projects = [
     <meta name="description" content="Digital Identity Card - Rezal Helwin Bramantara" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{fullName} | Digital Card</title>
+    
+    <!-- Netlify Identity Widget -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <!-- Theme Toggle -->
@@ -197,6 +200,26 @@ const projects = [
     </div>
 
     <script>
+      // Netlify Identity Widget
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+        
+        // Handle recovery/invite tokens
+        window.netlifyIdentity.on('error', (err) => {
+          console.error('Identity error:', err);
+        });
+        
+        window.netlifyIdentity.on('logout', () => {
+          document.location.href = '/';
+        });
+      }
+
       // Flip Card Functionality
       const flipCard = document.getElementById('flipCard');
       const flipBtn = document.getElementById('flipBtn');

@@ -1,0 +1,18 @@
+---
+import { defineConfig } from 'astro/config';
+import keystatic from '@keystatic/astro';
+
+export default defineConfig({
+  integrations: [keystatic()],
+});
+---
+
+<html lang="id">
+  <head>
+    <title>Admin - Rezal Blog CMS</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Keystatic />
+  </body>
+</html>
